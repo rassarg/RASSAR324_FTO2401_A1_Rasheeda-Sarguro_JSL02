@@ -21,30 +21,19 @@ document.querySelector('#submitWorkout').addEventListener('click', displayWorkou
 const addNewGoal = () => {
     const goalInput = document.querySelector('#goalInput').value;
     const goalList = document.querySelector('#goalList');
-
-    const goals = document.querySelectorAll('li');  // gets existing goal items
-    for (let i = 0; i< goals.length; i++) {
-        if (goals[i].textContent === goalInput) {
-        alert('Goal already added!');
-        return;
+    const goals = document.querySelectorAll('li');  // gets all existing goal list items
+    for (let i = 0; i< goals.length; i++) {  // for loop iterates over each existing goal (goals[i]) 
+        if (goals[i].textContent === goalInput) {  // checks if text content is the same as goalInput text content
+        alert('Goal already added!');  // if duplicate is found, an alert pops up
+        return; // exits function, preventing goal from being added
         }
     }
-
-    // If a duplicate is found, display an alert to the user and don't add the goal to the list.
-    // If it's not a duplicate, proceed with adding it as a new goal.
-    
-    // ⚠️ Hint 3: Code structure
-    // You might want to wrap the duplicate-checking logic in an 'if' statement.
-    
-    // ⚠️ Hint 4: Event listener
-    // The event listener that removes goals when clicked is not related to this issue.
-    // Focus on preventing duplicates for now.
-    
+    // if no duplicate is found, the item will be added to the goal list:
     const newGoal = document.createElement('li');
     newGoal.textContent = goalInput;
     goalList.appendChild(newGoal);
 
-    newGoal.addEventListener('click', () => {      // added in addition.
+    newGoal.addEventListener('click', () => {      // added this event listener to allow the added item to be removed
         goalList.removeChild(newGoal);
     });
 };
