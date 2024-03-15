@@ -19,12 +19,14 @@ document.querySelector('#submitWorkout').addEventListener('click', displayWorkou
 // NOW LET'S DEBUG TO PREVENT DUPLICATE GOALS FROM BEING SUBMITTED 🚀
 
 const addNewGoal = () => {
-    const goalInput = document.querySelector('#goalInput').value.toLowerCase().trim(); // first converts goals to lowercase (incase input is duplicated using capitalization), and removes whitespace 
+    const goalInput = document.querySelector('#goalInput').value;
     const goalList = document.querySelector('#goalList');
     const goals = document.querySelectorAll('li'); // gets all existing goal list items
     
     for (let i = 0; i< goals.length; i++) {  // for loop iterates over each existing goal (goals[i]) 
-        if (goals[i].textContent === goalInput) {  // checks if text content is the same as goalInput text content
+        const currentGoalList = goals[i].textContent.toLowerCase().trim().replace(/[ !@#$%^&*()_+\=\[\]{};:"\\|,.<>\/?]+/g, ''); // converts text content of goals to lowercase, removes white space, and removes special characters
+        
+        if (currentGoalList === goalInput.toLowerCase().trim().replace(/[ !@#$%^&*()_+\=\[\]{};:"\\|,.<>\/?]+/g, '')) {  // checks if content of existingGoalList is the same as goalInput text content
         alert('Goal already added!');  // if duplicate is found, an alert pops up
         return; // exits function, preventing goal from being added
         }
