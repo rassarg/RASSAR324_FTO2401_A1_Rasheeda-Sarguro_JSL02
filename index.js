@@ -24,8 +24,7 @@ const addNewGoal = () => {
     const goals = document.querySelectorAll('li'); // gets all existing goal list items
     
     for (let i = 0; i< goals.length; i++) {  // for loop iterates over each existing goal (goals[i]) 
-        const currentGoalList = goals[i].textContent.toLowerCase().trim().replace(/[ !@#$%^&*()_+\=\[\]{};:"\\|,.<>\/?]+/g, ''); // converts text content of goals to lowercase, removes white space, and removes special characters
-        
+        const currentGoalList = goals[i].textContent.toLowerCase().trim().replace(/[ !@#$%^&*()_+\=\[\]{};:"\\|,.<>\/?]+/g, ''); // converts text content of goals to lowercase, removes white space, and removes special characters from input
         if (currentGoalList === goalInput.toLowerCase().trim().replace(/[ !@#$%^&*()_+\=\[\]{};:"\\|,.<>\/?]+/g, '')) {  // checks if content of existingGoalList is the same as goalInput text content
         alert('Goal already added!');  // if duplicate is found, an alert pops up
         return; // exits function, preventing goal from being added
