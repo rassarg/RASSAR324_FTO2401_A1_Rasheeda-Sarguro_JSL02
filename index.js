@@ -19,7 +19,7 @@ document.querySelector('#submitWorkout').addEventListener('click', displayWorkou
 // NOW LET'S DEBUG TO PREVENT DUPLICATE GOALS FROM BEING SUBMITTED 🚀
 
 const addNewGoal = () => {
-    const goalInput = document.querySelector('#goalInput').value.toLowerCase(); // first converts goals to lowercase (incase input is duplicated using capitalization) 
+    const goalInput = document.querySelector('#goalInput').value.toLowerCase().trim(); // first converts goals to lowercase (incase input is duplicated using capitalization), and removes whitespace 
     const goalList = document.querySelector('#goalList');
     const goals = document.querySelectorAll('li'); // gets all existing goal list items
     
